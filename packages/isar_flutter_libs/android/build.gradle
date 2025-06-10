@@ -24,10 +24,10 @@ apply plugin: 'com.android.library'
 android {
     namespace 'dev.isar.isar_flutter_libs' // set explicitly for AGP8.0~
 
-    compileSdkVersion 30
+    compileSdkVersion 35
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 23
     }
 }
 
