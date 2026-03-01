@@ -35,6 +35,10 @@ export AR_aarch64_linux_android=$COMPILER_DIR/llvm-ar
 export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$COMPILER_DIR/aarch64-linux-android21-clang
 export CARGO_TARGET_AARCH64_LINUX_ANDROID_AR=$COMPILER_DIR/llvm-ar
 
+# --- 16KB page-size対応（Android 15+） ---
+EXTRA_LINK_ARGS="-C link-arg=-Wl,-z,max-page-size=16384 -C link-arg=-Wl,-z,common-page-size=16384"
+export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }$EXTRA_LINK_ARGS"
+
 if [ "$1" = "x86" ]; then
   rustup target add i686-linux-android
   cargo build --target i686-linux-android --release
