@@ -111,6 +111,13 @@ abstract class Query<T> {
   /// {@macro query_export_json_raw}
   R exportJsonRawSync<R>(R Function(Uint8List) callback);
 
+  /// Release native resources held by this query immediately.
+  ///
+  /// Calling this after a one-shot operation (findAll, count, etc.) frees the
+  /// underlying native CQuery without waiting for Dart GC / NativeFinalizer.
+  /// Must NOT be called on queries used with watch() / watchLazy().
+  void dispose();
+
   /// {@template query_export_json}
   /// Export the results of this query as json.
   /// {@endtemplate}

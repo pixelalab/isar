@@ -21,6 +21,11 @@ class QueryImpl<T> extends Query<T> {
   final String? propertyName;
 
   @override
+  void dispose() {
+    // Web uses JS GC; no native resources to release.
+  }
+
+  @override
   Isar get isar => col.isar;
 
   @override

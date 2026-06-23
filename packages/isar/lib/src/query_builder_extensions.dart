@@ -194,46 +194,144 @@ extension QueryExecute<OBJ, R> on QueryBuilder<OBJ, R, QQueryOperations> {
   Query<R> build() => _query.build();
 
   /// {@macro query_find_first}
-  Future<R?> findFirst() => build().findFirst();
+  Future<R?> findFirst() async {
+    final query = build();
+    try {
+      return await query.findFirst();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_find_first}
-  R? findFirstSync() => build().findFirstSync();
+  R? findFirstSync() {
+    final query = build();
+    try {
+      return query.findFirstSync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_find_all}
-  Future<List<R>> findAll() => build().findAll();
+  Future<List<R>> findAll() async {
+    final query = build();
+    try {
+      return await query.findAll();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_find_all}
-  List<R> findAllSync() => build().findAllSync();
+  List<R> findAllSync() {
+    final query = build();
+    try {
+      return query.findAllSync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_count}
-  Future<int> count() => build().count();
+  Future<int> count() async {
+    final query = build();
+    try {
+      return await query.count();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_count}
-  int countSync() => build().countSync();
+  int countSync() {
+    final query = build();
+    try {
+      return query.countSync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_is_empty}
-  Future<bool> isEmpty() => build().isEmpty();
+  Future<bool> isEmpty() async {
+    final query = build();
+    try {
+      return await query.isEmpty();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_is_empty}
-  bool isEmptySync() => build().isEmptySync();
+  bool isEmptySync() {
+    final query = build();
+    try {
+      return query.isEmptySync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_is_not_empty}
-  Future<bool> isNotEmpty() => build().isNotEmpty();
+  Future<bool> isNotEmpty() async {
+    final query = build();
+    try {
+      return await query.isNotEmpty();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_is_not_empty}
-  bool isNotEmptySync() => build().isNotEmptySync();
+  bool isNotEmptySync() {
+    final query = build();
+    try {
+      return query.isNotEmptySync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_delete_first}
-  Future<bool> deleteFirst() => build().deleteFirst();
+  Future<bool> deleteFirst() async {
+    final query = build();
+    try {
+      return await query.deleteFirst();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_delete_first}
-  bool deleteFirstSync() => build().deleteFirstSync();
+  bool deleteFirstSync() {
+    final query = build();
+    try {
+      return query.deleteFirstSync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_delete_all}
-  Future<int> deleteAll() => build().deleteAll();
+  Future<int> deleteAll() async {
+    final query = build();
+    try {
+      return await query.deleteAll();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_delete_all}
-  int deleteAllSync() => build().deleteAllSync();
+  int deleteAllSync() {
+    final query = build();
+    try {
+      return query.deleteAllSync();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_watch}
   Stream<List<R>> watch({bool fireImmediately = false}) =>
@@ -244,18 +342,44 @@ extension QueryExecute<OBJ, R> on QueryBuilder<OBJ, R, QQueryOperations> {
       build().watchLazy(fireImmediately: fireImmediately);
 
   /// {@macro query_export_json_raw}
-  Future<T> exportJsonRaw<T>(T Function(Uint8List) callback) =>
-      build().exportJsonRaw(callback);
+  Future<T> exportJsonRaw<T>(T Function(Uint8List) callback) async {
+    final query = build();
+    try {
+      return await query.exportJsonRaw(callback);
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_export_json_raw}
-  T exportJsonRawSync<T>(T Function(Uint8List) callback) =>
-      build().exportJsonRawSync(callback);
+  T exportJsonRawSync<T>(T Function(Uint8List) callback) {
+    final query = build();
+    try {
+      return query.exportJsonRawSync(callback);
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_export_json}
-  Future<List<Map<String, dynamic>>> exportJson() => build().exportJson();
+  Future<List<Map<String, dynamic>>> exportJson() async {
+    final query = build();
+    try {
+      return await query.exportJson();
+    } finally {
+      query.dispose();
+    }
+  }
 
   /// {@macro query_export_json}
-  List<Map<String, dynamic>> exportJsonSync() => build().exportJsonSync();
+  List<Map<String, dynamic>> exportJsonSync() {
+    final query = build();
+    try {
+      return query.exportJsonSync();
+    } finally {
+      query.dispose();
+    }
+  }
 }
 
 /// Extension for QueryBuilders
